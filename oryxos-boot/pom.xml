@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.oryxos</groupId>
+        <artifactId>oryxos</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>oryxos-boot</artifactId>
+    <name>OryxOS Boot</name>
+    <description>Spring Boot 启动模块：把所有依赖打成 fat JAR，单二进制部署</description>
+
+    <dependencies>
+        <!-- 汇聚所有模块 -->
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-provider</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-memory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-tool</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-channel-cli</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-storage</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oryxos</groupId>
+            <artifactId>oryxos-cli</artifactId>
+        </dependency>
+        <!-- 结构化日志 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>oryxos</finalName>
+        <plugins>
+            <!-- fat JAR：单二进制部署 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.oryxos.OryxOsApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
