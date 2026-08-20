@@ -12,8 +12,8 @@ Run the shortest path — "configure an Agent → chat with it → let it call t
 
 ```bash
 # Clone the repository
-git clone https://github.com/oryxos/oryxos.git
-cd oryxos
+git clone https://github.com/wzl521/agentos.git
+cd agentos
 
 # Build (produces a fat JAR — single binary deployment)
 mvn clean package -DskipTests

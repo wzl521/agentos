@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 
 const { lang } = useData()
 
-// SVG 图标路径（no-emoji-icons 规则）
+// SVG 图标路径（no-emoji-icons 规则），经 withBase 兼容 GitHub Pages 子路径
 const ICONS = {
   layers: '/icons/layers.svg',
   shield: '/icons/shield.svg',
@@ -16,6 +16,7 @@ const ICONS = {
   tool: '/icons/tool.svg',
   api: '/icons/api.svg',
 }
+const iconSrc = (name: string) => withBase(ICONS[name as keyof typeof ICONS])
 
 const t = computed(() => {
   const zh = {
@@ -162,7 +163,7 @@ const t = computed(() => {
       <p class="home-section-sub">{{ t.valueSub }}</p>
       <div class="value-grid">
         <div v-for="v in t.values" :key="v.title" class="value-card">
-          <div class="icon"><img :src="ICONS[v.icon]" alt="" width="21" height="21" loading="lazy" /></div>
+          <div class="icon"><img :src="iconSrc(v.icon)" alt="" width="21" height="21" loading="lazy" /></div>
           <h3>{{ v.title }}</h3>
           <p>{{ v.desc }}</p>
         </div>
@@ -176,8 +177,8 @@ const t = computed(() => {
       <p class="home-section-sub">{{ t.capSub }}</p>
       <div class="cap-grid">
         <a v-for="c in t.caps" :key="c.num" class="cap-card"
-           :href="lang === 'en-US' || lang === 'en' ? '/en/guide/capabilities' : '/guide/capabilities'">
-          <div class="cap-icon"><img :src="ICONS[c.icon]" alt="" width="19" height="19" loading="lazy" /></div>
+           :href="withBase(lang === 'en-US' || lang === 'en' ? '/en/guide/capabilities' : '/guide/capabilities')">
+          <div class="cap-icon"><img :src="iconSrc(c.icon)" alt="" width="19" height="19" loading="lazy" /></div>
           <div class="num">{{ c.num }}</div>
           <h3>{{ c.title }}</h3>
           <p>{{ c.desc }}</p>
@@ -191,7 +192,7 @@ const t = computed(() => {
       <h2 class="home-section-title">{{ t.archTitle }}</h2>
       <p class="home-section-sub">{{ t.archSub }}</p>
       <div class="arch-block">
-        <img src="/architecture.svg" alt="OryxOS Architecture" loading="lazy" />
+        <img :src="withBase('/architecture.svg')" alt="OryxOS Architecture" loading="lazy" />
       </div>
     </section>
 
@@ -241,11 +242,11 @@ const t = computed(() => {
         <p>{{ t.ctaSub }}</p>
         <div class="buttons">
           <a class="VPButton brand"
-             :href="lang === 'en-US' || lang === 'en' ? '/en/guide/getting-started' : '/guide/getting-started'">
+             :href="withBase(lang === 'en-US' || lang === 'en' ? '/en/guide/getting-started' : '/guide/getting-started')">
             {{ t.ctaPrimary }}
           </a>
           <a class="VPButton alt"
-             :href="lang === 'en-US' || lang === 'en' ? '/en/guide/what-is-oryxos' : '/guide/what-is-oryxos'">
+             :href="withBase(lang === 'en-US' || lang === 'en' ? '/en/guide/what-is-oryxos' : '/guide/what-is-oryxos')">
             {{ t.ctaSecondary }}
           </a>
         </div>

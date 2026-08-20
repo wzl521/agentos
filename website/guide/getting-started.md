@@ -12,8 +12,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/oryxos/oryxos.git
-cd oryxos
+git clone https://github.com/wzl521/agentos.git
+cd agentos
 
 # 编译打包（生成 fat JAR，单二进制部署）
 mvn clean package -DskipTests

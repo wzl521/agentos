@@ -14,7 +14,7 @@ hero:
       link: /guide/what-is-oryxos
     - theme: alt
       text: GitHub
-      link: https://github.com/oryxos/oryxos
+      link: https://github.com/wzl521/agentos
 
 features:
   - icon:

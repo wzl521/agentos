@@ -1,14 +1,18 @@
 import { defineConfig } from 'vitepress'
 
+// GitHub Pages 项目站点路径（本地开发默认为根路径 /）
+const base = process.env.VITEPRESS_BASE ?? '/'
+
 const shared = {
   title: 'OryxOS',
   logo: '/logo.svg',
   socialLinks: [
-    { icon: 'github', link: 'https://github.com/oryxos/oryxos' },
+    { icon: 'github', link: 'https://github.com/wzl521/agentos' },
   ] as const,
 }
 
 export default defineConfig({
+  base,
   lang: 'zh-CN',
   description: '企业能完全掌控的 Java Agent OS 底座',
 
@@ -16,7 +20,7 @@ export default defineConfig({
   appearance: 'light',
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}logo.svg` }],
   ],
 
   locales: {
@@ -33,7 +37,7 @@ export default defineConfig({
           { text: '文档', link: '/guide/what-is-oryxos', activeMatch: '/guide/' },
           { text: 'API 参考', link: '/guide/api-reference' },
           { text: '路线图', link: '/guide/roadmap' },
-          { text: 'GitHub', link: 'https://github.com/oryxos/oryxos' },
+          { text: 'GitHub', link: 'https://github.com/wzl521/agentos' },
         ],
         sidebar: {
           '/guide/': [
@@ -88,7 +92,7 @@ export default defineConfig({
           { text: 'Docs', link: '/en/guide/what-is-oryxos', activeMatch: '/en/guide/' },
           { text: 'API Reference', link: '/en/guide/api-reference' },
           { text: 'Roadmap', link: '/en/guide/roadmap' },
-          { text: 'GitHub', link: 'https://github.com/oryxos/oryxos' },
+          { text: 'GitHub', link: 'https://github.com/wzl521/agentos' },
         ],
         sidebar: {
           '/en/guide/': [
