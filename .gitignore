@@ -7,3 +7,4 @@ target/
 *.db
 *.db-journal
 logs/
+docs/prompt/*.md
